@@ -1,7 +1,7 @@
 name: Continuous Integration
 on:
   push:
-    branches: deploy
+    branches: main
 jobs:
   requirements:
     name: Continuous Integration
