@@ -1,0 +1,20 @@
+apiVersion: 1
+prune: true
+
+datasources:
+  - version: 1
+    uuid: "scalingo-bearer"
+    name: "scalingo-bearer"
+    type: "yesoreyeram-infinity-datasource"
+    url: "https://auth.scalingo.com/v1"
+    basicAuth: true
+    basicAuthUser: ""
+    isDefault: false
+    jsonData:
+      allowedHosts:
+        - "https://auth.scalingo.com"
+      auth_method: "basicAuth"
+      customHealthCheckEnabled: true
+      customHealthCheckUrl: "/tokens"
+    secureJsonData:
+      basicAuthPassword: $SCALINGO_AUTH_TOKEN

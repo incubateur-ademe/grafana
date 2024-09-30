@@ -1,0 +1,22 @@
+apiVersion: 1
+prune: true
+
+datasources:
+  - version: 1
+    uuid: "scalingo-json-api"
+    name: "scalingo-json-api"
+    type: "yesoreyeram-infinity-datasource"
+    url: "https://api.osc-fr1.scalingo.com/v1"
+    basicAuth: false
+    isDefault: true
+    jsonData:
+      allowedHosts:
+        - "https://api.osc-fr1.scalingo.com"
+        - "https://api.osc-secnum-fr1.scalingo.com"
+      auth_method: "none"
+      customHealthCheckEnabled: false
+      httpHeaderName1: "Content-Type"
+      httpHeaderName2: "Accept"
+    secureJsonData:
+      httpHeaderValue1: "application/json"
+      httpHeaderValue2: "application/json"
