@@ -1,3 +1,4 @@
+# should be adapted to your needs (dev only)
 services:
   grafana:
     image: grafana/grafana-enterprise

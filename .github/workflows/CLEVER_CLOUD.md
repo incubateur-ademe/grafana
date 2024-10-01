@@ -17,28 +17,19 @@ Now set for the app these options:
 * Cancel ongoing deployment on new push
 * Force HTTPS
 
+and connect Clever Cloud to your GitHub repository.
+
 Adjust the domain names as you want, and configure the environment variables as follow:
 * `SCALINGO_AUTH_TOKEN`: [GENERATED] _(can be retrieved from Scalingo token. It's not a bearer!)_
 * `GF_INSTALL_PLUGINS`: `yesoreyeram-infinity-datasource, volkovlabs-variable-panel, marcusolsson-dynamictext-panel`
-* `GF_PANELS_DISABLE_SANITIZE_HTML`: `true`
+* `GF_PANELS_DISABLE_SANITIZE_HTML`: `true` _(to avoid sanitizing HTML in panels, for `marcusolsson-dynamictext-panel` plugin)_
 * `GF_PLUGINS_PLUGIN_ADMIN_ENABLED`: `true`
 * `GF_PUBLIC_DASHBOARDS_ENABLED`: `false`
 * `GF_DATABASE_MAX_OPEN_CONN`: `1` _(only when using DEV plan on pg addon, to avoid `too many clients` error)_
-* `GF_DATABASE_TYPE`: `postgres`
-* `GF_DATABASE_HOST`: [GENERATED] _(provided by the interface)_
-* `GF_DATABASE_NAME`: [GENERATED] _(provided by the interface)_
-* `GF_DATABASE_USER`: [GENERATED] _(provided by the interface)_
-* `GF_DATABASE_PASSWORD`: [GENERATED] _(provided by the interface)_
-* `GF_DATABASE_URL`: [GENERATED] _(provided by the interface)_
+* `GF_DATABASE_SSL_MODE`: `require`
+* `GF_DATABASE_URL`: [GENERATED] _(provided by the interface, must start with "postgres" instead of "postgresql")_
 * `GF_SERVER_DOMAIN`: [GENERATED] _(either your configured domain, or the cleverapp.io one provided by the interface)_
-* `GF_INSTANCE_NAME`: `Grafana` _(or any other name you want)_
+* `GF_SERVER_HTTP_PORT`: `8080`
+* `GF_SERVER_PROTOCOL`: `http` _(https mode is handled by clevercloud by default)_
+* `GF_USERS_ALLOW_ORG_CREATE`: `false`
 
-### GitHub interface
-
-#### GitHub Actions
-
-Configure the following repository secrets (not environment ones):
-
-- `CLEVER_APP_ID`: [GENERATED] _(format `app_{uuid}`, can be retrieved into the Clever Cloud interface)_
-- `CLEVER_TOKEN`: [GENERATED] _(can be retrieved from `clever login`, but be warned it gives wide access)_
-- `CLEVER_SECRET`: [GENERATED] _(can be retrieved from `clever login`, but be warned it gives wide access)_
