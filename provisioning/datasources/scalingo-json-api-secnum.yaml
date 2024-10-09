@@ -8,7 +8,7 @@ datasources:
     type: "yesoreyeram-infinity-datasource"
     url: "https://api.osc-secnum-fr1.scalingo.com/v1"
     basicAuth: false
-    isDefault: true
+    isDefault: false
     jsonData:
       allowedHosts:
         - "https://api.osc-secnum-fr1.scalingo.com"
