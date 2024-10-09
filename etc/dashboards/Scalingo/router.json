@@ -597,6 +597,5 @@
     "timezone": "Europe/Paris",
     "title": "Router",
     "uid": "scalingo-router",
-    "version": 41,
     "weekStart": "monday"
 }

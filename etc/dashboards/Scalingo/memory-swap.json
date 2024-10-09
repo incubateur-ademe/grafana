@@ -688,6 +688,5 @@
   "timezone": "Europe/Paris",
   "title": "Memory / Swap",
   "uid": "scalingo-memory",
-  "version": 10,
   "weekStart": "monday"
 }

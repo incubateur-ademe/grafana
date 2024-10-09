@@ -686,8 +686,7 @@
     ]
   },
   "timezone": "Europe/Paris",
-  "title": "Memory / Swap",
-  "uid": "scalingo-memory",
-  "version": 10,
+  "title": "Memory / Swap (SecNum)",
+  "uid": "scalingo-memory-secnum",
   "weekStart": "monday"
 }

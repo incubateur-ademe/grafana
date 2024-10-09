@@ -595,8 +595,7 @@
         ]
     },
     "timezone": "Europe/Paris",
-    "title": "Router",
-    "uid": "scalingo-router",
-    "version": 41,
+    "title": "Router (SecNum)",
+    "uid": "scalingo-router-secnum",
     "weekStart": "monday"
 }
