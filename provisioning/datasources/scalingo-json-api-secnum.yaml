@@ -3,15 +3,15 @@ prune: true
 
 datasources:
   - version: 1
-    uuid: "scalingo-json-api"
-    name: "scalingo-json-api"
+    uuid: "scalingo-json-api-secnum"
+    name: "scalingo-json-api-secnum"
     type: "yesoreyeram-infinity-datasource"
-    url: "https://api.osc-fr1.scalingo.com/v1"
+    url: "https://api.osc-secnum-fr1.scalingo.com/v1"
     basicAuth: false
     isDefault: true
     jsonData:
       allowedHosts:
-        - "https://api.osc-fr1.scalingo.com"
+        - "https://api.osc-secnum-fr1.scalingo.com"
       auth_method: "none"
       customHealthCheckEnabled: false
       httpHeaderName1: "Content-Type"
