@@ -6,16 +6,20 @@ datasources:
     uuid: "scalingo-json-api"
     name: "scalingo-json-api"
     type: "yesoreyeram-infinity-datasource"
-    url: "https://api.osc-fr1.scalingo.com/v1"
+    url: "https://fgp.incubateur.ademe.fr/v1"
     basicAuth: false
     isDefault: true
     jsonData:
       allowedHosts:
-        - "https://api.osc-fr1.scalingo.com"
+        - "https://fgp.incubateur.ademe.fr"
       auth_method: "none"
       customHealthCheckEnabled: false
       httpHeaderName1: "Content-Type"
       httpHeaderName2: "Accept"
+      httpHeaderName3: "X-FGP-Key"
+      httpHeaderName4: "X-FGP-Blob"
     secureJsonData:
       httpHeaderValue1: "application/json"
       httpHeaderValue2: "application/json"
+      httpHeaderValue3: $FGP_KEY_FR1
+      httpHeaderValue4: $FGP_BLOB_FR1

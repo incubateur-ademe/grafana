@@ -11,7 +11,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 3
+        "y": 0
       },
       "panels": [],
       "repeat": "app",
@@ -21,11 +21,222 @@
     },
     {
       "datasource": {
-        "default": true,
         "type": "yesoreyeram-infinity-datasource",
-        "uid": "scalingo-json-api-secnum"
+        "uid": "${region}"
       },
-      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 500,
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 2,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "reqpm"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "4XX value"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "5XX value"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.9,
+        "fullHighlight": false,
+        "groupWidth": 1,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "normal",
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 100
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${region}"
+          },
+          "columns": [],
+          "filters": [],
+          "format": "table",
+          "parser": "simple",
+          "refId": "2XX",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "/apps/$app/stats/router",
+          "url_options": {
+            "data": "",
+            "method": "GET",
+            "params": [
+              {
+                "key": "status_code",
+                "value": "2XX"
+              },
+              {
+                "key": "since",
+                "value": "$since"
+              }
+            ]
+          }
+        },
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${region}"
+          },
+          "columns": [],
+          "filters": [],
+          "format": "table",
+          "parser": "simple",
+          "refId": "4XX",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "/apps/$app/stats/router",
+          "url_options": {
+            "data": "",
+            "method": "GET",
+            "params": [
+              {
+                "key": "status_code",
+                "value": "4XX"
+              },
+              {
+                "key": "since",
+                "value": "$since"
+              }
+            ]
+          }
+        },
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${region}"
+          },
+          "columns": [],
+          "filters": [],
+          "format": "table",
+          "parser": "simple",
+          "refId": "5XX",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "/apps/$app/stats/router",
+          "url_options": {
+            "data": "",
+            "method": "GET",
+            "params": [
+              {
+                "key": "status_code",
+                "value": "5XX"
+              },
+              {
+                "key": "since",
+                "value": "$since"
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Router since $since",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "time",
+                "targetField": "time"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "value"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "${region}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -92,7 +303,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 4
+        "y": 9
       },
       "options": {
         "legend": {
@@ -106,18 +317,15 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.2.0",
       "targets": [
         {
-          "columns": [],
-          "data": "",
           "datasource": {
             "type": "yesoreyeram-infinity-datasource",
-            "uid": "scalingo-json-api-secnum"
+            "uid": "${region}"
           },
+          "columns": [],
           "filters": [],
           "format": "table",
-          "global_query_id": "",
           "parser": "simple",
           "refId": "CPU",
           "root_selector": "",
@@ -130,13 +338,13 @@
             "params": [
               {
                 "key": "since",
-                "value": "$since_dynamic"
+                "value": "$since"
               }
             ]
           }
         }
       ],
-      "title": "CPU since $since_dynamic",
+      "title": "CPU since $since",
       "transformations": [
         {
           "id": "convertFieldType",
@@ -159,11 +367,9 @@
     },
     {
       "datasource": {
-        "default": true,
         "type": "yesoreyeram-infinity-datasource",
-        "uid": "scalingo-json-api-secnum"
+        "uid": "${region}"
       },
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -235,32 +441,29 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 4
+        "y": 9
       },
       "options": {
         "legend": {
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.2.0",
       "targets": [
         {
-          "columns": [],
-          "data": "",
           "datasource": {
             "type": "yesoreyeram-infinity-datasource",
-            "uid": "scalingo-json-api-secnum"
+            "uid": "${region}"
           },
+          "columns": [],
           "filters": [],
           "format": "table",
-          "global_query_id": "",
           "parser": "simple",
           "refId": "Memory",
           "root_selector": "",
@@ -273,22 +476,19 @@
             "params": [
               {
                 "key": "since",
-                "value": "$since_dynamic"
+                "value": "$since"
               }
             ]
           }
         },
         {
-          "columns": [],
-          "data": "",
           "datasource": {
             "type": "yesoreyeram-infinity-datasource",
-            "uid": "scalingo-json-api-secnum"
+            "uid": "${region}"
           },
+          "columns": [],
           "filters": [],
           "format": "table",
-          "global_query_id": "",
-          "hide": false,
           "parser": "simple",
           "refId": "Swap",
           "root_selector": "",
@@ -301,13 +501,13 @@
             "params": [
               {
                 "key": "since",
-                "value": "$since_dynamic"
+                "value": "$since"
               }
             ]
           }
         }
       ],
-      "title": "Memory since $since_dynamic",
+      "title": "Memory / Swap since $since",
       "transformations": [
         {
           "id": "convertFieldType",
@@ -339,12 +539,24 @@
   ],
   "schemaVersion": 39,
   "tags": [
-    "scalingo",
-    "memory",
-    "swap"
+    "scalingo"
   ],
   "templating": {
     "list": [
+      {
+        "current": {},
+        "hide": 0,
+        "includeAll": false,
+        "label": "Region",
+        "multi": false,
+        "name": "region",
+        "options": [],
+        "query": "yesoreyeram-infinity-datasource",
+        "refresh": 1,
+        "regex": "/scalingo-json-api.*/",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
       {
         "current": {
           "selected": true,
@@ -357,11 +569,12 @@
         },
         "datasource": {
           "type": "yesoreyeram-infinity-datasource",
-          "uid": "scalingo-json-api-secnum"
+          "uid": "${region}"
         },
-        "definition": "scalingo-json-api-secnum- (infinity) json",
+        "definition": "",
         "hide": 0,
         "includeAll": true,
+        "label": "App",
         "multi": true,
         "name": "app",
         "options": [],
@@ -385,7 +598,7 @@
             "root_selector": "",
             "source": "url",
             "type": "json",
-            "uql": "parse-json\n| project \"apps\"\n| jsonata \"$[parent_app_name='']\"\n| project \"name\"",
+            "uql": "parse-json\n| project \"apps\"\n| jsonata \"$[parent_app_name='']\"\n| order by \"name\" asc\n| project \"name\"",
             "url": "/apps",
             "url_options": {
               "data": "",
@@ -399,8 +612,7 @@
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
-        "type": "query",
-        "label": "App"
+        "type": "query"
       },
       {
         "current": {
@@ -410,8 +622,9 @@
         },
         "hide": 0,
         "includeAll": false,
+        "label": "Since",
         "multi": false,
-        "name": "since_dynamic",
+        "name": "since",
         "options": [
           {
             "selected": false,
@@ -451,8 +664,7 @@
         ],
         "query": "1h,3h,6h,12h,24h,48h,72h",
         "skipUrlSync": false,
-        "type": "custom",
-        "label": "Since"
+        "type": "custom"
       }
     ]
   },
@@ -473,7 +685,7 @@
     ]
   },
   "timezone": "Europe/Paris",
-  "title": "Memory / Swap (SecNum)",
-  "uid": "scalingo-memory-secnum",
+  "title": "Scalingo — App Detail",
+  "uid": "scalingo-app-detail",
   "weekStart": "monday"
 }

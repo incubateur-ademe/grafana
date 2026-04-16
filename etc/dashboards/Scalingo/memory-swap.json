@@ -6,165 +6,6 @@
   "liveNow": true,
   "panels": [
     {
-      "datasource": {
-        "default": true,
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "scalingo-json-api"
-      },
-      "description": "App from Scalingo",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "thresholdsStyle": {
-              "mode": "color",
-              "thresholds": []
-            }
-          },
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 8,
-        "y": 0
-      },
-      "options": {
-        "alwaysVisibleFilter": false,
-        "autoScroll": false,
-        "collapsedByDefault": false,
-        "customValue": false,
-        "displayMode": "minimize",
-        "emptyValue": false,
-        "favorites": {
-          "enabled": false,
-          "storage": "browser"
-        },
-        "filter": false,
-        "groupSelection": false,
-        "groups": [],
-        "header": false,
-        "padding": 3,
-        "persistent": false,
-        "saveSelectedGroup": false,
-        "saveSelectedGroupKey": "",
-        "showGroupTotal": false,
-        "showLabel": false,
-        "showName": true,
-        "showResetButton": false,
-        "showTotal": false,
-        "statusSort": false,
-        "sticky": false,
-        "tabsInOrder": true,
-        "variable": "app"
-      },
-      "pluginVersion": "3.4.0",
-      "targets": [
-        {
-          "columns": [],
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "scalingo-json-api"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "hide": false,
-          "refId": "A",
-          "root_selector": "",
-          "source": "inline",
-          "type": "json",
-          "url": "https://github.com/grafana/grafana-infinity-datasource/blob/main/testdata/users.json",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "title": "App",
-      "type": "volkovlabs-variable-panel"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "yesoreyeram-infinity-datasource",
-        "uid": "scalingo-json-api"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 12,
-        "y": 0
-      },
-      "options": {
-        "afterRender": "\nchangeToSelectedSince = (event) => {\n  const to = event.target.value;\n  const from = \"now-\" + to;\n  const ret = context.grafana.locationService.partial(\n    { from, to },\n    true\n  );\n  console.log({ from, to, ret, context })\n  return;\n}\n\n(() => {\n  const currentFrom = context.grafana.locationService.getSearch().get(\"from\");\n  const currentSince = currentFrom ? currentFrom.replace(\"now-\", \"\") : \"\";\n  document.getElementById(\"scalingo-since-select\").value = currentSince;\n\n})();\n",
-        "content": "<select id=\"scalingo-since-select\" onchange=\"changeToSelectedSince(event)\">\n  <option disabled value=\"\">Since</option>\n  {{#each data}}\n  <option type=\"button\" value=\"{{value}}\">Last {{value}}</option>\n  {{/each}}\n</select>",
-        "contentPartials": [],
-        "defaultContent": "The query didn't return any results.",
-        "editor": {
-          "format": "auto",
-          "language": "html"
-        },
-        "editors": [
-          "afterRender"
-        ],
-        "externalStyles": [],
-        "helpers": "",
-        "renderMode": "allRows",
-        "styles": "",
-        "wrap": false
-      },
-      "pluginVersion": "5.4.0",
-      "targets": [
-        {
-          "columns": [],
-          "data": "[\"1h\",\"3h\",\"6h\",\"12h\",\"24h\",\"48h\",\"72h\"]",
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "scalingo-json-api"
-          },
-          "filters": [],
-          "format": "table",
-          "global_query_id": "",
-          "hide": false,
-          "refId": "Since",
-          "root_selector": "",
-          "source": "inline",
-          "type": "json",
-          "url_options": {
-            "data": "",
-            "method": "GET"
-          }
-        }
-      ],
-      "title": "Since",
-      "type": "marcusolsson-dynamictext-panel"
-    },
-    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
@@ -285,12 +126,6 @@
           "url": "/apps/$app/stats/cpu/web",
           "url_options": {
             "data": "",
-            "headers": [
-              {
-                "key": "Authorization",
-                "value": "Bearer $bearer"
-              }
-            ],
             "method": "GET",
             "params": [
               {
@@ -434,12 +269,6 @@
           "url": "/apps/$app/stats/memory/web",
           "url_options": {
             "data": "",
-            "headers": [
-              {
-                "key": "Authorization",
-                "value": "Bearer $bearer"
-              }
-            ],
             "method": "GET",
             "params": [
               {
@@ -468,12 +297,6 @@
           "url": "/apps/$app/stats/swap/web",
           "url_options": {
             "data": "",
-            "headers": [
-              {
-                "key": "Authorization",
-                "value": "Bearer $bearer"
-              }
-            ],
             "method": "GET",
             "params": [
               {
@@ -524,47 +347,6 @@
     "list": [
       {
         "current": {
-          "selected": false
-        },
-        "datasource": {
-          "type": "yesoreyeram-infinity-datasource",
-          "uid": "scalingo-bearer"
-        },
-        "definition": "scalingo-bearer- (infinity) json",
-        "hide": 2,
-        "includeAll": false,
-        "multi": false,
-        "name": "bearer",
-        "options": [],
-        "query": {
-          "infinityQuery": {
-            "columns": [],
-            "filters": [],
-            "format": "table",
-            "parser": "simple",
-            "refId": "variable",
-            "root_selector": "",
-            "source": "url",
-            "type": "json",
-            "url": "/tokens/exchange",
-            "url_options": {
-              "body_content_type": "text/plain",
-              "body_type": "raw",
-              "data": "",
-              "method": "POST"
-            }
-          },
-          "query": "",
-          "queryType": "infinity"
-        },
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
-      },
-      {
-        "current": {
           "selected": true,
           "text": [
             "All"
@@ -578,7 +360,7 @@
           "uid": "scalingo-json-api"
         },
         "definition": "scalingo-json-api- (infinity) json",
-        "hide": 2,
+        "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "app",
@@ -607,12 +389,6 @@
             "url": "/apps",
             "url_options": {
               "data": "",
-              "headers": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer $bearer"
-                }
-              ],
               "method": "GET"
             }
           },
@@ -623,49 +399,60 @@
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
-        "type": "query"
+        "type": "query",
+        "label": "App"
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "6h",
           "value": "6h"
         },
-        "datasource": {
-          "type": "yesoreyeram-infinity-datasource",
-          "uid": "scalingo-json-api"
-        },
-        "definition": "scalingo-json-api- (infinity) uql",
-        "hide": 2,
+        "hide": 0,
         "includeAll": false,
         "multi": false,
         "name": "since_dynamic",
-        "options": [],
-        "query": {
-          "infinityQuery": {
-            "columns": [],
-            "data": "{ \"from\": ${__from}, \"to\": ${__to}, \"ratio\": 3600000 }",
-            "filters": [],
-            "format": "table",
-            "refId": "variable",
-            "root_selector": "",
-            "source": "inline",
-            "type": "uql",
-            "uql": "parse-json\n| project \"ratio\", \"since\"=diff(\"to\", \"from\")\n| project \"ratio\", \"since\"=div(\"since\", \"ratio\")\n| project \"since\"=strcat(\"since\", 'h')",
-            "url": "https://github.com/grafana/grafana-infinity-datasource/blob/main/testdata/users.json",
-            "url_options": {
-              "data": "",
-              "method": "GET"
-            }
+        "options": [
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
           },
-          "query": "",
-          "queryType": "infinity"
-        },
-        "refresh": 2,
-        "regex": "",
+          {
+            "selected": false,
+            "text": "3h",
+            "value": "3h"
+          },
+          {
+            "selected": true,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "24h",
+            "value": "24h"
+          },
+          {
+            "selected": false,
+            "text": "48h",
+            "value": "48h"
+          },
+          {
+            "selected": false,
+            "text": "72h",
+            "value": "72h"
+          }
+        ],
+        "query": "1h,3h,6h,12h,24h,48h,72h",
         "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
+        "type": "custom",
+        "label": "Since"
       }
     ]
   },
